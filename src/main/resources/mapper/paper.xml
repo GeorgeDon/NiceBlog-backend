@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="niceblog.Dao.PaperDao">
+    <resultMap type="BlogPaper" id="BlogPaperMap">
+        <result property="id" column="id"></result>
+        <result property="title" column="title"></result>
+        <result property="date" column="create_time"></result>
+        <result property="paper" column="paper"></result>
+        <result property="author" column="author"></result>
+    </resultMap>
+
+    <resultMap type="BlogPaperInfo" id="BlogPaperInfoMap">
+        <result property="id" column="id"></result>
+        <result property="title" column="title"></result>
+        <result property="date" column="create_time"></result>
+        <result property="author" column="author"></result>
+    </resultMap>
+
+    <select id="queryPaperByid" parameterType="String" resultMap="BlogPaperMap">
+       SELECT id,title,title,create_time,author FROM t_paper WHERE id=#{id}
+    </select>
+
+    <select id="queryPapers" parameterType="int" resultMap="BlogPaperMap">
+        SELECT * FROM t_paper ORDER BY create_time DESC LIMIT #{fromIndex},#{pageSize}
+    </select>
+
+    <select id="queryPaperCount" resultType="int" >
+        SELECT count(*) FROM t_paper
+    </select>
+
+    <select id="queryPaperInfos" parameterType="int" resultMap="BlogPaperInfoMap">
+        SELECT id,title,create_time,author FROM t_paper ORDER BY create_time DESC LIMIT #{fromIndex},#{pageSize}
+    </select>
+
+    <insert id="addPaper" parameterType="BlogPaper">
+        INSERT INTO t_paper (
+        id,
+        title,
+        author,
+        paper,
+        create_time
+        )
+        VALUES
+        (
+        #{id},#{title},#{author},#{ paper},#{date})
+    </insert>
+
+</mapper>
