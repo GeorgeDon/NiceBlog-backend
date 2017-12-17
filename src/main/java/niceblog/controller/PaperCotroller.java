@@ -25,7 +25,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/v1")
-@CrossOrigin(origins = "http://127.0.0.1:4200")
+@CrossOrigin
 public class PaperCotroller {
 
     @Autowired

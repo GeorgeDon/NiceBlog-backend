@@ -19,7 +19,7 @@
     </resultMap>
 
     <select id="queryPaperByid" parameterType="String" resultMap="BlogPaperMap">
-       SELECT id,title,title,create_time,author FROM t_paper WHERE id=#{id}
+       SELECT id,title,paper,create_time,author FROM t_paper WHERE id=#{id}
     </select>
 
     <select id="queryPapers" parameterType="int" resultMap="BlogPaperMap">
